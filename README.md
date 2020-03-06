@@ -1,10 +1,42 @@
 # google-java-format-szumver
 
 Fork of the google-java-format project that seeks to conform to the style guide set by 
-UCF's Sean Szulmanski. This is a work-in-progress; right now this project fails its own
-test cases. This project also may require permission from Sean Szulmanski.
+UCF's Sean Szulmanski. This project may require permission from Sean Szulmanski for its 
+naming or usage. It is almost fully functional, but is still a work-in-progress.
 
-## General
+NOTE: I modified ~100 lines of code; the vast majority of this codebase is not my work. Use
+the commit history to see where this project and the original diverged. HUGE thanks to the
+original Google authors of google-java-format. 
+
+# Quick Start
+
+Download the jar from the [Releases][] tab. Install the jar anywhere into your System Path, or just put
+the jar in with the rest of your source code. Execute `java -jar google-java-format-szumver.jar -r <.java file>`.
+
+[Releases]: https://github.com/Falcinspire/google-java-format-szumver/releases
+
+# Specifications
+
+This format does not exactly match Sean Szulmanski's, but should be a subset of it. The var keyword is currently
+not handled.
+
+* A header must be included with // comments at the very top of the file, in the format:
+```java
+// <Full Name>
+// Course Number/String>, <Spring|Fall|Summer> <4-digit (with MSD != 0) non-negative Semester Year>
+// <Description of program in 1+ lines>
+```
+* Slash-star comments (/* */) are dissallowed anywhere in the file.
+* Slash-slash comments (//) are dissallowed when trailing statements (but OK on lines by themselves).
+* Indenting is done with 4 spaces per level
+* All methods in a file are seperated by a blank line
+* Braces are Allman style
+* Max column width is 100
+* By default, any formatting not listed here is handled by the the style guide set by Google.
+
+The rest of this README is copied from the original project.
+
+# google-java-format
 
 `google-java-format` is a program that reformats Java source code to comply with
 [Google Java Style][].
