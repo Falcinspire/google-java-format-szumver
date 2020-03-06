@@ -1,4 +1,7 @@
-# google-java-format
+# google-java-format-szumver
+
+Fork of the google-java-format project that seeks to conform to the style guide set by 
+UCF's Sean Szulmanski
 
 `google-java-format` is a program that reformats Java source code to comply with
 [Google Java Style][].
