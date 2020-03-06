@@ -1,11 +1,13 @@
 # google-java-format-szumver
 
-Fork of the google-java-format project that seeks to conform to the style guide set by 
+This is a fork of the google-java-format project that seeks to conform to the style guide set by 
 UCF's Sean Szulmanski. This project may require permission from Sean Szulmanski for its 
 naming or usage. It is almost fully functional, but is still a work-in-progress.
 
-WARNING: I am not responsible for loss of code/problems that this software may cause. Always backup
-your source code, using either a local .git or some other manual or automatic backup service.
+WARNING: This program is not responsible for loss of code/problems that this software may cause. Always backup
+your source code, using either a local .git or some other manual or automatic backup service. This program 
+is ALSO not responsible for ensuring the complete formatting correctness of your program (Although I
+hope it outputs as such).
 
 NOTE: I modified ~100 lines of code; the vast majority of this codebase is not my work. Use
 the commit history to see where this project and the original diverged. HUGE thanks to the
