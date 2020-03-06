@@ -829,7 +829,7 @@ public final class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
       builder.close();
       builder.close();
     }
-    builder.space();
+    builder.forcedBreak();
     tokenBreakTrailingComment("{", plusTwo);
     ArrayList<VariableTree> enumConstants = new ArrayList<>();
     ArrayList<Tree> members = new ArrayList<>();
@@ -1458,10 +1458,10 @@ public final class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
     builder.close();
     if (node.getBody() == null) {
       token(";");
-    } else {
-      builder.space();
-      builder.token("{", Doc.Token.RealOrImaginary.REAL, plusTwo, Optional.of(plusTwo));
-    }
+    } 
+    // else {
+    //   builder.token("{", Doc.Token.RealOrImaginary.REAL, plusTwo, Optional.of(plusTwo));
+    // }
     builder.close();
 
     if (node.getBody() != null) {
@@ -1472,6 +1472,8 @@ public final class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
   }
 
   private void methodBody(MethodTree node) {
+    builder.forcedBreak();
+    builder.token("{", Doc.Token.RealOrImaginary.REAL, plusTwo, Optional.of(plusTwo));
     if (node.getBody().getStatements().isEmpty()) {
       builder.blankLineWanted(BlankLineWanted.NO);
     } else {
@@ -1800,7 +1802,7 @@ public final class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
     token("(");
     scan(skipParen(node.getExpression()), null);
     token(")");
-    builder.space();
+    builder.forcedBreak();
     tokenBreakTrailingComment("{", plusTwo);
     builder.blankLineWanted(BlankLineWanted.NO);
     builder.open(plusTwo);
@@ -2079,11 +2081,13 @@ public final class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
         // TODO(cushon): is this needed?
         token(";");
       } else {
+        builder.forcedBreak();
         tokenBreakTrailingComment("{", plusTwo);
         builder.blankLineWanted(BlankLineWanted.NO);
         token("}", plusTwo);
       }
     } else {
+      builder.forcedBreak();
       builder.open(ZERO);
       builder.open(plusTwo);
       tokenBreakTrailingComment("{", plusTwo);
@@ -2416,10 +2420,12 @@ public final class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
     scan(node.getName(), null);
     builder.space();
     if (node.getDirectives().isEmpty()) {
+      builder.forcedBreak();
       tokenBreakTrailingComment("{", plusTwo);
       builder.blankLineWanted(BlankLineWanted.NO);
       token("}", plusTwo);
     } else {
+      builder.forcedBreak();
       builder.open(plusTwo);
       token("{");
       builder.forcedBreak();
@@ -3440,7 +3446,7 @@ public final class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
       List<? extends Tree> bodyDeclarations, BracesOrNot braces, FirstDeclarationsOrNot first0) {
     if (bodyDeclarations.isEmpty()) {
       if (braces.isYes()) {
-        builder.space();
+        builder.forcedBreak();
         tokenBreakTrailingComment("{", plusTwo);
         builder.blankLineWanted(BlankLineWanted.NO);
         builder.open(ZERO);
@@ -3449,7 +3455,7 @@ public final class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
       }
     } else {
       if (braces.isYes()) {
-        builder.space();
+        builder.forcedBreak();
         tokenBreakTrailingComment("{", plusTwo);
         builder.open(ZERO);
       }
