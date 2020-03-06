@@ -28,6 +28,7 @@ import com.google.errorprone.annotations.Immutable;
 import com.google.googlejavaformat.Doc;
 import com.google.googlejavaformat.DocBuilder;
 import com.google.googlejavaformat.FormattingError;
+import com.google.googlejavaformat.Input;
 import com.google.googlejavaformat.Newlines;
 import com.google.googlejavaformat.Op;
 import com.google.googlejavaformat.OpsBuilder;
@@ -36,6 +37,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import org.openjdk.javax.tools.Diagnostic;
 import org.openjdk.javax.tools.DiagnosticCollector;
@@ -128,6 +130,29 @@ public final class Formatter {
       // impossible
       throw new IOError(e);
     }
+
+    int commentCount = 0;
+    if (javaInput.getTokens().size() > 0 && javaInput.getToken(0).getToksBefore().size() > 0) {
+      boolean prevWasNewline = false;
+      for (Input.Tok tok : javaInput.getToken(0).getToksBefore()) {
+        if (tok.isComment()) {
+          commentCount++;
+          prevWasNewline = false;
+        }
+        // don't allow breaks between comments here (a double newline '\n\n')
+        else if (tok.isNewline() && !prevWasNewline) {
+          prevWasNewline = true;
+        }
+        else break;
+      }
+    }
+    if (commentCount == 0) {
+      System.err.println("Missing header!");
+    } else if (commentCount < 3) {
+      System.err.println("Header should be larger");
+    }
+    //TODO check/replace? any /* */ because those are dissalowed
+
     SimpleJavaFileObject source =
         new SimpleJavaFileObject(URI.create("source"), JavaFileObject.Kind.SOURCE) {
           @Override
