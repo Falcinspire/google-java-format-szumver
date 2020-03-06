@@ -130,6 +130,24 @@ public final class Formatter {
       // impossible
       throw new IOError(e);
     }
+    SimpleJavaFileObject source =
+    new SimpleJavaFileObject(URI.create("source"), JavaFileObject.Kind.SOURCE) {
+      @Override
+      public CharSequence getCharContent(boolean ignoreEncodingErrors) throws IOException {
+        return javaInput.getText();
+      }
+    };
+    Log.instance(context).useSource(source);
+    ParserFactory parserFactory = ParserFactory.instance(context);
+    JavacParser parser =
+    parserFactory.newParser(
+      javaInput.getText(),
+      /*keepDocComments=*/ true,
+      /*keepEndPos=*/ true,
+      /*keepLineMap=*/ true);
+    unit = parser.parseCompilationUnit();
+    unit.sourcefile = source;
+    javaInput.setCompilationUnit(unit);
 
     // TODO enforce header format
     // TODO refactor into method
@@ -148,7 +166,6 @@ public final class Formatter {
         else break;
       }
     }
-
     // TODO refactor into method
     for (Input.Token token : javaInput.getTokens()) {
       for (Input.Tok tok : token.getToksBefore()) {
@@ -158,7 +175,6 @@ public final class Formatter {
         }
       }
     }
-
     if (commentCount == 0) {
       javaInput.createDiagnostic(0, "Missing Header");
       System.err.println("Missing Header");
@@ -166,27 +182,7 @@ public final class Formatter {
       javaInput.createDiagnostic(0, "Header should be larger");
       System.err.println("Header should be larger");
     }
-    //TODO check/replace? any /* */ because those are dissalowed
-
-    SimpleJavaFileObject source =
-        new SimpleJavaFileObject(URI.create("source"), JavaFileObject.Kind.SOURCE) {
-          @Override
-          public CharSequence getCharContent(boolean ignoreEncodingErrors) throws IOException {
-            return javaInput.getText();
-          }
-        };
-    Log.instance(context).useSource(source);
-    ParserFactory parserFactory = ParserFactory.instance(context);
-    JavacParser parser =
-        parserFactory.newParser(
-            javaInput.getText(),
-            /*keepDocComments=*/ true,
-            /*keepEndPos=*/ true,
-            /*keepLineMap=*/ true);
-    unit = parser.parseCompilationUnit();
-    unit.sourcefile = source;
-
-    javaInput.setCompilationUnit(unit);
+    
     Iterable<Diagnostic<? extends JavaFileObject>> errorDiagnostics =
         Iterables.filter(diagnostics.getDiagnostics(), Formatter::errorDiagnostic);
     if (!Iterables.isEmpty(errorDiagnostics)) {

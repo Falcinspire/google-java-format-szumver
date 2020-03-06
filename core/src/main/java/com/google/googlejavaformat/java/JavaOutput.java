@@ -178,7 +178,7 @@ public final class JavaOutput extends Output {
 
   @Override
   public void indent(int indent) {
-    spacesPending.append(Strings.repeat(" ", indent));
+    spacesPending.append(Strings.repeat("  ", indent));
   }
 
   /** Flush any incomplete last line, then add the EOF token into our data structures. */
