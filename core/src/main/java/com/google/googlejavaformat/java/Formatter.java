@@ -131,6 +131,8 @@ public final class Formatter {
       throw new IOError(e);
     }
 
+    // TODO enforce header format
+    // TODO refactor into method
     int commentCount = 0;
     if (javaInput.getTokens().size() > 0 && javaInput.getToken(0).getToksBefore().size() > 0) {
       boolean prevWasNewline = false;
@@ -146,6 +148,14 @@ public final class Formatter {
         else break;
       }
     }
+
+    // TODO refactor into method
+    for (Input.Token token : javaInput.getTokens()) {
+      for (Input.Tok tok : token.getToksBefore()) {
+        if (tok.isSlashStarComment()) System.err.println("/**/ comments not allowed! @" + tok.getIndex() + "\"" + tok.getOriginalText() + "\"");
+      }
+    }
+
     if (commentCount == 0) {
       System.err.println("Missing header!");
     } else if (commentCount < 3) {
