@@ -31,23 +31,20 @@ not handled.
 // Course Number/String>, <Spring|Fall|Summer> <4-digit (with MSD != 0) non-negative Semester Year>
 // <Description of program in 1+ lines>
 ```
-* Slash-star comments (/* */) are dissallowed anywhere in the file.
-* Slash-slash comments (//) are dissallowed when trailing statements (but OK on lines by themselves).
-* Indenting is done with 4 spaces per level
-* All methods in a file are seperated by a blank line
-* Braces are Allman style
-* Max column width is 100
-* Binary operators have a single space one both sides
-* There are no spaces between method names and their argument lists
-* There is a single space before conditional keywords and their "argument list"s
-* By default, any formatting not listed here is handled by the the style guide set by Google.
+* Indenting is done with 4 spaces per level (formatted)
+* All methods in a file are seperated by a blank line (formatted)
+* Braces are Allman style (formatted)
+* Max column width is 100 (formatted)
+* Binary operators have a single space one both sides (formatted)
+* There are no spaces between method names and their argument lists (formatted)
+* There is a single space before conditional keywords and their "argument list"s (formatted)
+* Slash-star comments (/* */) are dissallowed anywhere in the file (warning)
+* Slash-slash comments (//) are dissallowed when trailing statements (but OK on lines by themselves) (warning)
+* Var keyword is disallowed (warning)
+* Class/method names follow Java conventions (warning)
+* By default, any formatting not listed here is handled by the the style guide set by Google
 
-What is not noticably handled right now:
-* Var keyword should not be allowed
-* Class/method names should follow Java conventions
-
-A few rules (commenting and header) will not be automaticaly corrected, and warnings will display
-in the syserr stream (usually the console).
+## Onward
 The rest of this README is copied from the original project.
 
 # google-java-format
