@@ -24,23 +24,23 @@ the jar in with the rest of your source code. Execute `java -jar google-java-for
 
 This format does not exactly match Sean Szulmanski's, but should be a subset of it.
 
-* A header must be included with // comments at the very top of the file, in the format:
+* A header must be included with // comments at the very top of the file, in the format: *(warning)*
 ```java
 // <Full Name>
 // <Course Number/String>, <Spring|Fall|Summer> <4-digit (with MSD != 0) non-negative Semester Year>
 // <Description of program in 1+ lines>
 ```
-* Indenting is done with 4 spaces per level (formatted)
-* All methods in a file are seperated by a blank line (formatted)
-* Braces are Allman style (formatted)
-* Max column width is 100 (formatted)
-* Binary operators have a single space one both sides (formatted)
-* There are no spaces between method names and their argument lists (formatted)
-* There is a single space before conditional keywords and their "argument list"s (formatted)
-* Slash-star comments (/* */) are dissallowed anywhere in the file (warning)
-* Slash-slash comments (//) are dissallowed when trailing statements (but OK on lines by themselves) (warning)
-* Var keyword is disallowed (warning)
-* Class/method names follow Java conventions (warning)
+* Indenting is done with 4 spaces per level *(formatted)*
+* All methods in a file are seperated by a blank line *(formatted)*
+* Braces are Allman style *(formatted)*
+* Max column width is 100 *(formatted)*
+* Binary operators have a single space one both sides *(formatted)*
+* There are no spaces between method names and their argument lists *(formatted)*
+* There is a single space before conditional keywords and their "argument list"s *(formatted)*
+* Slash-star comments (/* */) are dissallowed anywhere in the file *(warning)*
+* Slash-slash comments (//) are dissallowed when trailing statements (but OK on lines by themselves) *(warning)*
+* Var keyword is disallowed *(warning)*
+* Class/method names follow Java conventions *(warning)*
 * By default, any formatting not listed here is handled by the the style guide set by Google
 
 ## Onward
