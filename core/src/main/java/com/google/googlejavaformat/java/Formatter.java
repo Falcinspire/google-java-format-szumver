@@ -152,13 +152,18 @@ public final class Formatter {
     // TODO refactor into method
     for (Input.Token token : javaInput.getTokens()) {
       for (Input.Tok tok : token.getToksBefore()) {
-        if (tok.isSlashStarComment()) System.err.println("/**/ comments not allowed! @" + tok.getIndex() + "\"" + tok.getOriginalText() + "\"");
+        if (tok.isSlashStarComment()) {
+          javaInput.createDiagnostic(tok.getIndex(),"/**/ comments not allowed! " + "\"" + tok.getOriginalText() + "\"");
+          System.err.println("/**/ comments not allowed! @" + tok.getIndex() + "\"" + tok.getOriginalText() + "\"");
+        }
       }
     }
 
     if (commentCount == 0) {
-      System.err.println("Missing header!");
+      javaInput.createDiagnostic(0, "Missing Header");
+      System.err.println("Missing Header");
     } else if (commentCount < 3) {
+      javaInput.createDiagnostic(0, "Header should be larger");
       System.err.println("Header should be larger");
     }
     //TODO check/replace? any /* */ because those are dissalowed
