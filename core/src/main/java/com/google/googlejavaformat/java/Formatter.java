@@ -148,41 +148,11 @@ public final class Formatter {
     unit = parser.parseCompilationUnit();
     unit.sourcefile = source;
     javaInput.setCompilationUnit(unit);
-
-    // TODO enforce header format
-    // TODO refactor into method
-    int commentCount = 0;
-    if (javaInput.getTokens().size() > 0 && javaInput.getToken(0).getToksBefore().size() > 0) {
-      boolean prevWasNewline = false;
-      for (Input.Tok tok : javaInput.getToken(0).getToksBefore()) {
-        if (tok.isComment()) {
-          commentCount++;
-          prevWasNewline = false;
-        }
-        // don't allow breaks between comments here (a double newline '\n\n')
-        else if (tok.isNewline() && !prevWasNewline) {
-          prevWasNewline = true;
-        }
-        else break;
-      }
-    }
-    // TODO refactor into method
-    for (Input.Token token : javaInput.getTokens()) {
-      for (Input.Tok tok : token.getToksBefore()) {
-        if (tok.isSlashStarComment()) {
-          javaInput.createDiagnostic(tok.getIndex(),"/**/ comments not allowed! " + "\"" + tok.getOriginalText() + "\"");
-          System.err.println("/**/ comments not allowed! @" + tok.getIndex() + "\"" + tok.getOriginalText() + "\"");
-        }
-      }
-    }
-    if (commentCount == 0) {
-      javaInput.createDiagnostic(0, "Missing Header");
-      System.err.println("Missing Header");
-    } else if (commentCount < 3) {
-      javaInput.createDiagnostic(0, "Header should be larger");
-      System.err.println("Header should be larger");
-    }
-    
+    // TODO figure out where these lines should go
+    checkHeader(javaInput);
+    checkSlashStar(javaInput);
+    checkTrailingSlashSlash(javaInput);
+    // end TODO
     Iterable<Diagnostic<? extends JavaFileObject>> errorDiagnostics =
         Iterables.filter(diagnostics.getDiagnostics(), Formatter::errorDiagnostic);
     if (!Iterables.isEmpty(errorDiagnostics)) {
@@ -197,6 +167,110 @@ public final class Formatter {
     doc.computeBreaks(javaOutput.getCommentsHelper(), MAX_LINE_LENGTH, new Doc.State(+0, 0));
     doc.write(javaOutput);
     javaOutput.flush();
+  }
+
+  static void checkHeader(final JavaInput javaInput) {
+    String[] header = new String[3];
+    int headerI = 0;
+    if (javaInput.getTokens().size() > 0 && javaInput.getToken(0).getToksBefore().size() > 0) {
+      boolean prevWasNewline = false;
+      for (Input.Tok tok : javaInput.getToken(0).getToksBefore()) {
+        if (tok.isSlashSlashComment()) {
+          header[headerI++] = tok.getOriginalText().substring(2).trim();
+          prevWasNewline = false;
+        }
+        // don't allow breaks between comments here (a double newline '\n\n')
+        else if (tok.isNewline() && !prevWasNewline) {
+          prevWasNewline = true;
+        }
+        else break;
+      }
+    }
+    boolean[] headerWrong = new boolean[3];
+    boolean anyWrong = false;
+    if (!verifyNameLine(header[0])) {
+      headerWrong[0] = true;
+      anyWrong = true;
+    }
+    if (!verifyCourseLine(header[1])) {
+      headerWrong[1] = true;
+      anyWrong = true;
+    }
+    if (!verifyDescriptionLine(header[2])) {
+      headerWrong[2] = true;
+      anyWrong = true;
+    }
+    if (anyWrong) {
+      String[] correct = new String[] {
+        "<FirstName> <Last Name>",
+        "<Course Number/String>, <Spring|Fall|Summer> <4-digit (with MSD != 0) non-negative Semester Year>",
+        "<Description of program in 1+ lines>"
+      };
+      String coords = 0 + ":" + 0 + " ";
+      System.err.println(coords + "Header is incomplete: ");
+      System.err.println("====================================");
+      for (int i = 0; i < 3; i++) {
+        if (headerWrong[i]) {
+          String provided = header[i] != null ? "\"" + header[i] + "\"" : "<<Blank>>";
+          System.err.println(provided + " != " + correct[i]);
+        } else {
+          System.err.println("good");
+        }
+      }
+      System.err.println("====================================");
+    }
+  }
+
+  static boolean verifyNameLine(String content) {
+    if (content == null) return false;
+    String[] tokens = content.split(" ");
+    return tokens.length > 1;
+  }
+
+  static boolean verifyCourseLine(String content) {
+    if (content == null) return false;
+    String[] tokens = content.split(" ");
+    if (tokens.length < 3) return false;
+    if (!tokens[0].endsWith(",")) return false;
+    if (!(tokens[1].contentEquals("Spring") || tokens[1].contentEquals("Fall") || tokens[1].contentEquals("Summer"))) return false;
+    int number = -1;
+    boolean malnumber = false;
+    try {
+      number = Integer.parseInt(tokens[2]);
+    } catch (NumberFormatException e) {
+      malnumber = true;
+    }
+    if (malnumber) return false;
+    if (number < 0) return false;
+    if (number / 1000 == 0) return false;
+    if (number / 10000 != 0) return false; 
+    return true;
+  }
+
+  static boolean verifyDescriptionLine(String content) {
+    return content != null;
+  }
+
+  static void checkSlashStar(final JavaInput javaInput) {
+    for (Input.Token token : javaInput.getTokens()) {
+      for (Input.Tok tok : token.getToksBefore()) {
+        if (tok.isSlashStarComment()) {
+          String coords = javaInput.getLineNumber(tok.getPosition()) + ":" + tok.getColumn() + " ";          
+          System.err.println(coords + "/**/ comments not allowed! " + "\"" + tok.getOriginalText() + "\"");
+        }
+      }
+    }
+  }
+
+  static void checkTrailingSlashSlash(final JavaInput javaInput) {
+    for (Input.Token token : javaInput.getTokens()) {
+      for (Input.Tok tok : token.getToksAfter()) {
+        if (tok.isComment()) {
+          String coords = javaInput.getLineNumber(tok.getPosition()) + ":" + tok.getColumn() + " ";
+          System.err.println(coords + "Trailing // comments not allowed! " + "\"" + tok.getOriginalText() + "\"");
+        }
+      }
+    }
   }
 
   static boolean errorDiagnostic(Diagnostic<?> input) {
