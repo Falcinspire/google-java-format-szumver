@@ -22,8 +22,7 @@ the jar in with the rest of your source code. Execute `java -jar google-java-for
 
 # Specifications
 
-This format does not exactly match Sean Szulmanski's, but should be a subset of it. The var keyword is currently
-not handled.
+This format does not exactly match Sean Szulmanski's, but should be a subset of it.
 
 * A header must be included with // comments at the very top of the file, in the format:
 ```java
