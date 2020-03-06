@@ -259,7 +259,7 @@ public final class Formatter {
       for (Input.Tok tok : token.getToksBefore()) {
         if (tok.isSlashStarComment()) {
           String coords = javaInput.getLineNumber(tok.getPosition()) + ":" + tok.getColumn() + " ";          
-          System.err.println(coords + "/**/ comments not allowed! " + "\"" + tok.getOriginalText() + "\"");
+          System.err.println(coords + "/**/ comments not allowed: " + "\"" + tok.getOriginalText() + "\"");
         }
       }
     }
@@ -270,7 +270,7 @@ public final class Formatter {
       for (Input.Tok tok : token.getToksAfter()) {
         if (tok.isComment()) {
           String coords = javaInput.getLineNumber(tok.getPosition()) + ":" + tok.getColumn() + " ";
-          System.err.println(coords + "Trailing // comments not allowed! " + "\"" + tok.getOriginalText() + "\"");
+          System.err.println(coords + "Trailing // comments not allowed: " + "\"" + tok.getOriginalText() + "\"");
         }
       }
     }
