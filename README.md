@@ -37,7 +37,14 @@ not handled.
 * All methods in a file are seperated by a blank line
 * Braces are Allman style
 * Max column width is 100
+* Binary operators have a single space one both sides
+* There are no spaces before method names and their argument lists
+* There is a single space before conditional keywords and their "argument list"s
 * By default, any formatting not listed here is handled by the the style guide set by Google.
+
+What is not noticably handled right now:
+* Var keyword should not be allowed
+* Class/method names should follow Java conventions
 
 A few rules (commenting and header) will not be automaticaly corrected, and warnings will display
 in the syserr stream (usually the console).
