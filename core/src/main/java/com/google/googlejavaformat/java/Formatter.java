@@ -153,6 +153,9 @@ public final class Formatter {
     checkSlashStar(javaInput);
     checkTrailingSlashSlash(javaInput);
     // end TODO
+
+    new NameValidatorAstVisitor().visitCompilationUnit(unit, null);
+
     Iterable<Diagnostic<? extends JavaFileObject>> errorDiagnostics =
         Iterables.filter(diagnostics.getDiagnostics(), Formatter::errorDiagnostic);
     if (!Iterables.isEmpty(errorDiagnostics)) {
