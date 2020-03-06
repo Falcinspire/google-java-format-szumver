@@ -187,6 +187,8 @@ public final class Formatter {
           prevWasNewline = true;
         }
         else break;
+
+        if (headerI == 3) break;
       }
     }
     boolean[] headerWrong = new boolean[3];
