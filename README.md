@@ -27,7 +27,7 @@ This format does not exactly match Sean Szulmanski's, but should be a subset of 
 * A header must be included with // comments at the very top of the file, in the format:
 ```java
 // <Full Name>
-// Course Number/String>, <Spring|Fall|Summer> <4-digit (with MSD != 0) non-negative Semester Year>
+// <Course Number/String>, <Spring|Fall|Summer> <4-digit (with MSD != 0) non-negative Semester Year>
 // <Description of program in 1+ lines>
 ```
 * Indenting is done with 4 spaces per level (formatted)
