@@ -4,6 +4,9 @@ Fork of the google-java-format project that seeks to conform to the style guide 
 UCF's Sean Szulmanski. This project may require permission from Sean Szulmanski for its 
 naming or usage. It is almost fully functional, but is still a work-in-progress.
 
+WARNING: I am not responsible for loss of code/problems that this software may cause. Always backup
+your source code, using either a local .git or some other manual or automatic backup service.
+
 NOTE: I modified ~100 lines of code; the vast majority of this codebase is not my work. Use
 the commit history to see where this project and the original diverged. HUGE thanks to the
 original Google authors of google-java-format. 
@@ -11,7 +14,7 @@ original Google authors of google-java-format.
 # Quick Start
 
 Download the jar from the [Releases][] tab. Install the jar anywhere into your System Path, or just put
-the jar in with the rest of your source code. Execute `java -jar google-java-format-szumver.jar -r <.java file>`.
+the jar in with the rest of your source code. Execute `java -jar google-java-format-szumver-1.0.jar -r <.java file>`.
 
 [Releases]: https://github.com/Falcinspire/google-java-format-szumver/releases
 
@@ -34,6 +37,8 @@ not handled.
 * Max column width is 100
 * By default, any formatting not listed here is handled by the the style guide set by Google.
 
+A few rules (commenting and header) will not be automaticaly corrected, and warnings will display
+in the syserr stream (usually the console).
 The rest of this README is copied from the original project.
 
 # google-java-format
