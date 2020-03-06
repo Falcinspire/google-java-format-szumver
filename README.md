@@ -38,7 +38,7 @@ not handled.
 * Braces are Allman style
 * Max column width is 100
 * Binary operators have a single space one both sides
-* There are no spaces before method names and their argument lists
+* There are no spaces between method names and their argument lists
 * There is a single space before conditional keywords and their "argument list"s
 * By default, any formatting not listed here is handled by the the style guide set by Google.
 
