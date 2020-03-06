@@ -39,12 +39,14 @@ public class StringWrapperTest {
             "}");
     String output =
         lines(
-            "class T {",
+            "class T",
+            "{",
             "  String s =",
             "      someMethodWithQuiteALongNameThatWillGetUsUpCloseToTheColumnLimit()",
             "          + \"foo bar foo bar foo bar\";",
             "",
-            "  String someMethodWithQuiteALongNameThatWillGetUsUpCloseToTheColumnLimit() {",
+            "  String someMethodWithQuiteALongNameThatWillGetUsUpCloseToTheColumnLimit()",
+            "  {",
             "    return null;",
             "  }",
             "}");

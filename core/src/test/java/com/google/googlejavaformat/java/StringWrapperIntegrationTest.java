@@ -43,7 +43,8 @@ public class StringWrapperIntegrationTest {
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken\"",
           "          + \" sentence moving from\"",
@@ -55,7 +56,8 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken\"",
           "          + \" sentence moving from topic to topic so that\"",
@@ -64,7 +66,8 @@ public class StringWrapperIntegrationTest {
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken\"",
           "          + \" sentence moving from\"",
@@ -76,7 +79,8 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken\"",
           "          + \" sentence moving from topic to topic\"",
@@ -85,7 +89,8 @@ public class StringWrapperIntegrationTest {
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken\"",
           "          + \" sentence moving from\"",
@@ -97,13 +102,15 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s = \"one long incredibly unbroken sentence moving from topic to topic so that"
               + " no-one had a chance to interrupt\";",
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken\"",
           "          + \" sentence moving from\"",
@@ -115,7 +122,8 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken sentence\"",
           "          + \" moving from topic to topic\"",
@@ -125,7 +133,8 @@ public class StringWrapperIntegrationTest {
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken\"",
           "          + \" sentence moving from\"",
@@ -138,14 +147,16 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s ="
               + " \"onelongincrediblyunbrokensentencemovingfromtopictotopicsothatnoonehadachanceto"
               + " interrupt\";",
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "     "
               + " \"onelongincrediblyunbrokensentencemovingfromtopictotopicsothatnoonehadachanceto\"",
@@ -155,13 +166,15 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s = \"\\n\\none\\nlong\\nincredibly\\nunbroken\\nsentence\\nmoving\\nfrom\\n"
               + " topic\\nto\\n topic\\nso\\nthat\\nno-one\\nhad\\na\\nchance\\nto\\ninterrupt\";",
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"\\n\\n\"",
           "          + \"one\\n\"",
@@ -187,14 +200,16 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s = \"\\n\\n\\none\\n\\nlong\\n\\nincredibly\\n\\nunbroken\\n\\nsentence\\n\\n"
               + "moving\\n\\nfrom\\n\\n topic\\n\\nto\\n\\n topic\\n\\nso\\n\\nthat\\n\\nno-one"
               + "\\n\\nhad\\n\\na\\n\\nchance\\n\\nto\\n\\ninterrupt\\n\\n\";",
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"\\n\\n\\n\"",
           "          + \"one\\n\\n\"",
@@ -220,13 +235,15 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s = \"onelongincrediblyunbrokensenten\\tcemovingfromtopictotopicsothatnoonehada"
               + "chance tointerrupt\";",
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"onelongincrediblyunbrokensenten\"",
           "          + \"\\tcemovingfromtopictotopicsothatnoonehadachance\"",
@@ -236,13 +253,15 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s = \"onelongincrediblyunbrokensentencemovingfromtopictotopicsothatnoonehada"
               + "chancetointerrupt_____________________)_\";",
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"onelongincrediblyunbrokensentencemovingfromtopictotopicsothatnoonehada"
               + "chancetointerrupt_____________________)_\";",
@@ -251,13 +270,15 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s = \"onelongincrediblyunbrokensentencemovingfromtopictotopicsot atnoonehada"
               + "chancetointerrupt______________________\";;",
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"onelongincrediblyunbrokensentencemovingfromtopictotopicsot\"",
           "          + \" atnoonehadachancetointerrupt______________________\";",
@@ -267,13 +288,15 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s = \"__ onelongincrediblyunbrokensentencemovingfromtopictotopicsothatnoonehada"
               + "chanceto interrupt\";",
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"__"
               + " onelongincrediblyunbrokensentencemovingfromtopictotopicsothatnoonehadachanceto\"",
@@ -283,7 +306,8 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken sentence\"",
           "          // comment",
@@ -295,7 +319,8 @@ public class StringWrapperIntegrationTest {
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"one long incredibly unbroken\"",
           "          + \" sentence\"",
@@ -312,14 +337,16 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s =",
           "      \"aaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbb ccccccccccccccccccccccccccc"
               + " dddddddddddddddddd\";",
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"aaaaaaaaaaaaaaaaaaaaaaaa\"",
           "          + \" bbbbbbbbbbbbbbbbbb\"",
@@ -330,7 +357,8 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  String s =",
           "      \"aaaaaaaaaaaaaaaaaaaaaaaa \"",
           "          + \"bbbbbbbbbbbbbbbbbb \"",
@@ -339,7 +367,8 @@ public class StringWrapperIntegrationTest {
           "}"
         },
         {
-          "class T {",
+          "class T",
+          "{",
           "  String s =",
           "      \"aaaaaaaaaaaaaaaaaaaaaaaa\"",
           "          + \" bbbbbbbbbbbbbbbbbb\"",
@@ -350,14 +379,16 @@ public class StringWrapperIntegrationTest {
       },
       {
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  byte[] bytes =",
           "      \"one long incredibly unbroken sentence moving from topic to topic so that no-one"
               + " had a chance to interrupt\".getBytes();",
           "}"
         },
         {
-          "class T {", //
+          "class T", //
+          "{",
           "  byte[] bytes =",
           "      \"one long incredibly unbroken sentence moving from topic to topic so that no-one"
               + " had a chance to interrupt\"",
