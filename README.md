@@ -4,7 +4,7 @@ This is a fork of the google-java-format project that seeks to conform to the st
 UCF's Sean Szulmanski. This project may require permission from Sean Szulmanski for its 
 naming or usage. It is almost fully functional, but is still a work-in-progress.
 
-WARNING: This program is not responsible for loss of code/problems that this software may cause. Always backup
+WARNING: This program is not responsible for loss of code/problems that it may cause. Always backup
 your source code, using either a local .git or some other manual or automatic backup service. This program 
 is ALSO not responsible for ensuring the complete formatting correctness of your program (Although I
 hope it outputs as such).
