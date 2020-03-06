@@ -16,7 +16,7 @@ original Google authors of google-java-format.
 # Quick Start
 
 Download the jar from the [Releases][] tab. Install the jar anywhere into your System Path, or just put
-the jar in with the rest of your source code. Execute `java -jar google-java-format-szumver-1.0.jar -r <.java file>`.
+the jar in with the rest of your source code. Execute `java -jar google-java-format-szumver-1.1.jar -r <.java file>`.
 
 [Releases]: https://github.com/Falcinspire/google-java-format-szumver/releases
 
