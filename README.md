@@ -16,7 +16,7 @@ original Google authors of google-java-format.
 # Quick Start
 
 Download the jar from the [Releases][] tab. Install the jar anywhere into your System Path, or just put
-the jar in with the rest of your source code. Execute `java -jar google-java-format-szumver-1.0.jar -r <.java file>`.
+the jar in with the rest of your source code. Execute `java -jar google-java-format-szumver-1.1.jar -r <.java file>`.
 
 [Releases]: https://github.com/Falcinspire/google-java-format-szumver/releases
 
@@ -27,7 +27,7 @@ This format does not exactly match Sean Szulmanski's, but should be a subset of 
 * A header must be included with // comments at the very top of the file, in the format:
 ```java
 // <Full Name>
-// Course Number/String>, <Spring|Fall|Summer> <4-digit (with MSD != 0) non-negative Semester Year>
+// <Course Number/String>, <Spring|Fall|Summer> <4-digit (with MSD != 0) non-negative Semester Year>
 // <Description of program in 1+ lines>
 ```
 * Indenting is done with 4 spaces per level (formatted)
