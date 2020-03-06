@@ -1,7 +1,10 @@
 # google-java-format-szumver
 
 Fork of the google-java-format project that seeks to conform to the style guide set by 
-UCF's Sean Szulmanski
+UCF's Sean Szulmanski. This is a work-in-progress; right now this project fails its own
+test cases. This project also may require permission from Sean Szulmanski.
+
+## General
 
 `google-java-format` is a program that reformats Java source code to comply with
 [Google Java Style][].
