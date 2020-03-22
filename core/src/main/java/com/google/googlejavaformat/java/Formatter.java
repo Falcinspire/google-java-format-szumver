@@ -207,7 +207,7 @@ public final class Formatter {
     }
     if (anyWrong) {
       String[] correct = new String[] {
-        "<FirstName> <Last Name>",
+        "<FirstName> <Last Name>, <NID>",
         "<Course Number/String>, <Spring|Fall|Summer> <4-digit (with MSD != 0) non-negative Semester Year>",
         "<Description of program in 1+ lines>"
       };
@@ -228,20 +228,23 @@ public final class Formatter {
 
   static boolean verifyNameLine(String content) {
     if (content == null) return false;
-    String[] tokens = content.split(" ");
-    return tokens.length > 1;
+    String[] parts = content.split(",");
+    if (parts.length != 2) return false;
+    String[] names = parts[0].split(" ");
+    return names.length > 1 && parts[1].length() > 4;
   }
 
   static boolean verifyCourseLine(String content) {
     if (content == null) return false;
-    String[] tokens = content.split(" ");
-    if (tokens.length < 3) return false;
-    if (!tokens[0].endsWith(",")) return false;
-    if (!(tokens[1].contentEquals("Spring") || tokens[1].contentEquals("Fall") || tokens[1].contentEquals("Summer"))) return false;
+    String[] parts = content.trim().split(",");
+    if (parts.length != 2) return false;
+    String[] date = parts[1].trim().split(" ");
+    if (date.length != 2) return false;
+    if (!(date[0].contentEquals("Spring") || date[0].contentEquals("Fall") || date[0].contentEquals("Summer") || date[0].contentEquals("Winter"))) return false;
     int number = -1;
     boolean malnumber = false;
     try {
-      number = Integer.parseInt(tokens[2]);
+      number = Integer.parseInt(date[1]);
     } catch (NumberFormatException e) {
       malnumber = true;
     }
